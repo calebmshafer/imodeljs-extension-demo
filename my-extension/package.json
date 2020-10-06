@@ -1,0 +1,33 @@
+{
+  "name": "my-extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc 1>&2 && npm run build:extension",
+    "build:extension": "extension-webpack-tools build -s ./src/MyExtension.ts -o ./lib/extension",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@bentley/build-tools": "^2.0.0",
+    "@bentley/extension-webpack-tools": "^2.0.0",
+    "typescript": "~3.7.4"
+  },
+  "dependencies": {
+    "@bentley/bentleyjs-core": "^2.0.0",
+    "@bentley/geometry-core": "^2.0.0",
+    "@bentley/imodeljs-common": "^2.0.0",
+    "@bentley/imodeljs-i18n": "^2.0.0",
+    "@bentley/imodeljs-frontend": "^2.0.0",
+    "@bentley/imodeljs-markup": "^2.0.0",
+    "@bentley/imodeljs-quantity": "^2.0.0",
+    "@bentley/product-settings-client": "^2.0.0",
+    "@bentley/orbitgt-core": "^2.0.0",
+    "@bentley/ui-abstract": "^2.0.0",
+    "@bentley/ui-framework": "^2.0.0",
+    "@bentley/webgl-compatibility": "^2.0.0"
+  }
+}
