@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prebuild": "cpx \"./src/public/**/*\" ./lib/extension/",
     "build": "tsc 1>&2 && npm run build:extension",
     "build:extension": "extension-webpack-tools build -s ./src/MyExtension.ts -o ./lib/extension",
     "test": "echo \"Error: no test specified\" && exit 1"
