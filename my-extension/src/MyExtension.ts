@@ -1,21 +1,8 @@
-import {
-  Extension,
-  IModelApp,
-  ScreenViewport,
-} from "@bentley/imodeljs-frontend";
+import { Extension, IModelApp, ScreenViewport } from "@bentley/imodeljs-frontend";
 import { I18N } from "@bentley/imodeljs-i18n";
 import { LineTool, MarkupApp, SelectTool } from "@bentley/imodeljs-markup";
-import {
-  CommonToolbarItem,
-  ToolbarItemUtilities,
-  UiItemsManager,
-  UiItemsProvider,
-} from "@bentley/ui-abstract";
-import {
-  StageUsage,
-  ToolbarUsage,
-  ToolbarOrientation,
-} from "@bentley/ui-abstract";
+import { CommonToolbarItem, ToolbarItemUtilities, UiItemsManager, UiItemsProvider } from "@bentley/ui-abstract";
+import { StageUsage, ToolbarUsage, ToolbarOrientation } from "@bentley/ui-abstract";
 
 export class MyUiItemsProvider implements UiItemsProvider {
   public readonly id = "MyItemsProvider";
@@ -25,17 +12,10 @@ export class MyUiItemsProvider implements UiItemsProvider {
     MyUiItemsProvider.i18n = i18n;
   }
 
-  public provideToolbarButtonItems(
-    _stageId: string,
-    stageUsage: string,
-    toolbarUsage: ToolbarUsage,
-    toolbarOrientation: ToolbarOrientation
-  ): CommonToolbarItem[] {
-    if (
-      stageUsage !== StageUsage.General ||
+  public provideToolbarButtonItems(_stageId: string, stageUsage: string, toolbarUsage: ToolbarUsage, toolbarOrientation: ToolbarOrientation): CommonToolbarItem[] {
+    if (stageUsage !== StageUsage.General ||
       toolbarUsage !== ToolbarUsage.ContentManipulation ||
-      toolbarOrientation !== ToolbarOrientation.Vertical
-    )
+      toolbarOrientation !== ToolbarOrientation.Vertical)
       return [];
 
     return [
@@ -89,7 +69,7 @@ export class MyExtension extends Extension {
     // Wait for the localization to be loaded
     await this.i18n.getNamespace(this._defaultNs)!.readFinished;
 
-    // Need to initialize Markup before registering the tools.
+    // Initializes the the Markup localization files for use in the tools
     await MarkupApp.initialize();
 
     UiItemsManager.register(new MyUiItemsProvider(this.i18n));
@@ -100,7 +80,7 @@ export class MyExtension extends Extension {
 
   /** Invoked each time this extension is loaded. */
   public async onExecute(): Promise<void> {
-    alert(this.i18n.translate(`${this._defaultNs}:HelloAgain`));
+    // alert(this.i18n.translate(`${this._defaultNs}:HelloAgain`));
   }
 }
 
